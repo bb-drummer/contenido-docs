@@ -1,0 +1,88 @@
+/**
+ * flexible/dynamic CMS content in CONTENIDO 
+ * ----------------------------
+ * 
+ * = thoughts on flexible, dynamic and custom CMS_??? objects in CONTENIDO modules
+ *
+ *	  - store and retrieve CMS_??? article content:
+ *		<code>
+ *			conSaveContentEntry($idartlang, "CMS_MYTYPE", 123, $rawData);
+ *			// ...
+ *			$art = new cApiArticleLanguage($idartlang);
+ *			$rawValue = $art->getContent("CMS_MYTYPE", 123);
+ *		</code> 
+ *
+ *
+ *
+ *
+ *    - custom CMS_??? type class:
+ *   	<code>
+ *			class cContentTypeMytype extends cContentTypeAbstract {
+ *				public function __construct($rawSettings, $id, array $contentTypes) {
+ *			        // change attributes from the parent class and call the parent
+ *			        // constructor
+ *			        parent::__construct($rawSettings, $id, $contentTypes);
+ *			        $this->_type = 'CMS_MYTYPE';
+ *			        $this->_prefix = 'mytype';
+ *			    }
+ *				
+ *				public function generateViewCode() {
+ *					// ...
+ *					return $this->_encodeForOutput($this->_rawSettings);
+ *				}
+ *				
+ *				public function generateEditCode() {
+ *					// see "cHTML??? objects for CONTENIDO CMS editor objects
+ *					return $this->_encodeForOutput($my_generated_html);
+ *				}
+ *			}
+ *   	</code>
+ *
+ *
+ *
+ *    - generate CMS_??? code for output:
+ *   	<code>
+ *			$oGenerator = new cTypeGenerator();
+ *			$code = $oGenerator->getGeneratedCmsTag("CMS_MYTYPE", 123); // <- CMS_MYTYPE[123]
+ *   	</code>
+ *
+ *
+ *
+ *    - possible custom CMS_??? types:
+ *		 - CMS_LIST
+ *		 - CMS_DATATABLE
+ *		 - CMS_TABS, CMS_HTMLTABS
+ *		 - CMS_FLEX (!)
+ *		 - CMS_(I)FRAME(SET)
+ *		 - CMS_APPLICATION(_CONTROLLER)
+ *
+ *
+ *
+ *    - custom CMS_??? type examples in CONTENIDO
+ *		@see contenido/classes/content_types/class.content.type.*.php
+ *		@see contenido/plugins/form_assistant/classes/class.content.type.pifa_form.php
+ *
+ *
+ *
+ * ----------------------------
+ *
+ *
+ *
+ * = important notes: 
+ *    - CMS_??? code now completely outsourced from DB into php classes in 4.9 (!)
+ *    - ...but custom CMS_??? types must still be registered in "con_type"
+ *
+ *
+ *
+ * ----------------------------
+ *
+ * @package		CONTENIDO development
+ * @subpackage	CONTENIDO modules
+ * @subpackage	CONTENIDO developer docs
+ * @version		CONTENIDO 4.9, (CONTENIDO 4.8)
+ *
+ * @author		Björn Bartels, [dragon-projects.net] <info@dragon-projects.net>
+ *
+ **/
+
+

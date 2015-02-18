@@ -1,0 +1,121 @@
+/**
+ * CONTENIDO client's data
+ *
+ * this may be some groundwork for further research on a possible "client operations" plugin/extension
+ * it may include copying articles and/or a category tree, modules from one client to another, 
+ * backup and im/export operations... 
+ * 
+ * 
+ * client's data table structure overview:
+ * ======================================
+ *
+ *  # client       # system data
+ *	con_clients -=- con_actionlog
+ * 	  			 |- con_config_client
+ *				 |- con_code
+ *				 |- con_communications
+ *				 |- con_data
+ *				 |- con_properties
+ *				 |- con_stat
+ *				 |- con_stat_archive
+ *				 |
+ *				 |
+ *				 |  ## client's content data
+ *               |
+ *               |  # language data
+ *			 	 |- con_clients_lang -=- con_lang
+ *				 |                    |  con_keywords
+ *				 |
+ *               |  # file/upload management data
+ *				 |- con_dbfs
+ *				 |- con_upl --- con_upl_meta
+ *				 |
+ *               |  # js/css/html file info 
+ *				 |- con_file_information
+ *				 |
+ *               |  # module data
+ *				 |- con_mod --- con_mod_translations
+ *				 |
+ *               |  # layout and template data
+ *				 |- con_lay --- con_template -=- con_container
+ *				 |                            |
+ *				 |                            |- con_template_conf --- con_container_conf
+ *				 |
+ *               |  # category data
+ *				 |- con_cat -=- con_cat_art
+ *				 |           |- con_cat_tree
+ *				 |           |- con_cat_lang
+ *				 |           |
+ *				 |         ( |- con_template_conf )
+ *				 |
+ *               |  # article data
+ *				 |- con_art_spec
+ *				 |- con_art --- con_art_lang -=- con_art_lang_download
+ *				 |                            |- con_art_lang_vererbung
+ *				 |                            |- con_content
+ *				 |                            |- con_link
+ *				 |                            |- con_multisite_sync_art_lang
+ *				 |                            |
+ *				 |                            |- con_meta_tag --- con_meta_type
+ *				 |                            |
+ *				 |                          ( |- con_template_conf )
+ *				 |
+ *				 |
+ *				 |  ## other client specific content data
+ *               |
+ *               |  # frontend-user plugin data
+ *				 |- con_frontendusers
+ *				 |- con_frontendgroups --- con_frontendgroupmembers
+ *				 |
+ *               |  # newsletter plugin data
+ *				 |- con_news
+ *				 |- con_news_jobs
+ *				 |- con_news_rcp
+ *				 |- con_news_groups --- con_news_groupmembers
+ *				 |
+ *               |  # P.AD. specials
+ *				 |- con_stellenangebote
+ *				 |- con_jekyll --- con_jekyll_artlang
+ *	
+ *
+ * ----------------------------
+ *
+ * import/export thoughts:
+ * ======================
+ *
+ * important notes: 
+ *  - order of inserting the data rows/sets
+ *  - all plugins should have been already installed
+ * 
+ * possible order:
+ *  - client
+ *      - system data
+ *
+ *      - language data
+ *      - file/upload managment data
+ *      - js/css/html file info data
+ *
+ *      - module data
+ *      - layout/template data
+ *      - category data
+ *          - config loop
+ *      - article data
+ *          - config loop
+ *
+ *      - plugin/extension data
+ *
+ *
+ *
+ *
+ * ----------------------------
+ *
+ *
+ * @package		CONTENIDO development
+ * @subpackage	CONTENIDO developer docs
+ * @version		CONTENIDO 4.8.15
+ *
+ * @author		Björn Bartels, [dragon-projects.net] <info@dragon-projects.net>
+ *
+ **/
+
+

@@ -1,0 +1,53 @@
+Mandanten: (include.client_edit.php)
+=====================================
+// select client
+$sql = "SELECT
+            idclient, name, frontendpath, htmlpath, errsite_cat, errsite_art
+        FROM
+            ".$cfg["tab"]["clients"]."
+        WHERE
+            idclient = '".Contenido_Security::toInteger($idclient)."'";
+
+// add client
+$sql = "INSERT INTO
+    ".$cfg["tab"]["clients"]."
+    SET
+        name = '".Contenido_Security::escapeDB($clientname, $db)."',
+        frontendpath = '".Contenido_Security::escapeDB($frontendpath, $db)."',
+        htmlpath = '".Contenido_Security::escapeDB($htmlpath, $db)."',
+        errsite_cat = '".Contenido_Security::toInteger($errsite_cat)."',
+        errsite_art = '".Contenido_Security::toInteger($errsite_art)."',
+        idclient = '".Contenido_Security::toInteger($idclient)."'";
+     
+$properties->setValue("idclient", $idclient, "backend", "clientimage", $clientlogo);
+$copytemplate ...
+
+// edit client
+$sql = "UPDATE 
+        ".$cfg["tab"]["clients"]."
+        SET
+			name = '".Contenido_Security::escapeDB($clientname, $db)."',
+			frontendpath = '".Contenido_Security::escapeDB($frontendpath, $db)."',
+			htmlpath = '".Contenido_Security::escapeDB($htmlpath, $db)."',
+			errsite_cat = '".Contenido_Security::toInteger($errsite_cat)."',
+			errsite_art = '".Contenido_Security::toInteger($errsite_art)."'
+		WHERE
+			idclient = '".Contenido_Security::toInteger($idclient)."'";
+
+
+
+Sprachen: (include.lang_edit.php)
+=====================================
+// select language
+$sql = "SELECT
+			A.idlang AS idlang, A.name AS name, A.active as active, A.encoding as encoding, A.direction as direction,
+			B.idclient AS idclient 
+		FROM
+			".$cfg["tab"]["lang"]." AS A,
+			".$cfg["tab"]["clients_lang"]." AS B
+		WHERE
+			A.idlang = '".Contenido_Security::toInteger($idlang)."' AND
+			B.idlang = '".Contenido_Security::toInteger($idlang)."'";
+
+// insert/edit language
+(includes/functions.lang.php)

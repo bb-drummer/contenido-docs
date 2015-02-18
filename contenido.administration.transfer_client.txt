@@ -1,0 +1,56 @@
+/**
+ * transfer one ore more clients (including CONTENIDO itself) from one CONTENIDO 
+ * multi-client setup to a new server/host/domain
+ * ----------------------------
+ * 
+ *  = preperations: (just in case, this all happens on the same server)
+ *     - create a backup of all of your CONTENIDO source installation (client files, CONTENIDO files, database)
+ *
+ *
+ *  = copying:
+ *     - copy/import CONTENIDO database
+ *     - copy CONTENIDO backend files 
+ *     - copy client's CONTENIDO frontend files
+ *     - (see CONTENIDO installation documents for appropiate file/folder permissions and system requirements)
+ *
+ *
+ *  = clean up:
+ *     - remove all irrelevant data from database ('contenido.development.clientdata.delete_*_id.sql')
+ *     - remove all irrelevant data/files from client's upload folder
+ *     - remove all data/files from client's cache folder
+ *
+ *
+ *  = adapting:
+ *     - edit the paths in 'contenido/includes/config.php' to the needs of that new environment
+ *     - edit the database configuration in 'contenido/includes/config.php' to the needs of that new environment
+ *
+ *     - login as a 'Systemadministrator" and 
+ *        - adjust path and URL in client's settings
+ *        - remove obsolete users from CONTENIDO system
+ *        - perform CONTENIDO maintenance tasks
+ *       
+ *
+ *  = check:
+ *     - browse the categories and articles (in front- and backend) to see if any content is missing/broken
+ *
+ *
+ *  = follow ups
+ *     - from now on, the new CONTENIDO setup should be fully operable
+ *     - now you can start adjusting content, uploading files, change settings, and so on
+ *
+ *
+ *
+ * ----------------------------
+ *
+ * @see			http://www.contenido.org/de/cms/Beginnen/technische-grundlagen/index-c-1875-3.html
+ * @see			http://faq.contenido.org
+ *
+ * @package		CONTENIDO development
+ * @subpackage	CONTENIDO developer docs
+ * @version		CONTENIDO 4.8.15
+ *
+ * @author		Björn Bartels, [dragon-projects.net] <info@dragon-projects.net>
+ *
+ **/
+
+
